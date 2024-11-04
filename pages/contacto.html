@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+</head>
+<body>
+    <header>
+
+    </header>
+    <main>
+        <h1>Contacto</h1>
+            <form action="/enviar-mensaje" method="POST">
+                <div>
+                <label for="nombre">Nombre:</label>
+                <input type="text" placeholder="Ingrese su nombre completo" id="nombre" name="nombre" required>
+                </div>
+                <div>
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" placeholder="Ingrese un email valido" id="email" name="email" required>
+                </div>
+                <div>
+                <label for="mensaje">Mensaje:</label>
+                </div>
+                <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+                <div>
+                <button type="submit">Enviar</button>
+                </div>
+            </form>
+    </main>
+</body>
+</html>

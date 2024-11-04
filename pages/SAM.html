@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAM</title>
+    <!-- Incluir Chart.js desde CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Incluir jsPDF y autoTable desde CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <!-- Incluir SheetJS (xlsx) desde CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        /* Estilo para el contenedor con scroll */
+        #scrollTableContainer {
+            max-height: 300px; /* Altura fija para la tabla con scroll */
+            overflow-y: scroll; /* Habilitar desplazamiento vertical */
+            margin-bottom: 20px; /* Espacio para el gráfico */
+        }
+        /* Estilo del gráfico */
+        #chartContainer {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        /* Botón para redirigir */
+        #buttonContainer {
+            margin-top: 20px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Registros de Test Diferenciales SAM</h1>
+
+    <!-- Contenedor de la tabla con scroll -->
+    <div id="scrollTableContainer">
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th>ID Test</th>
+                    <th>ID Dispositivo</th>
+                    <th>Tiempo Respuesta (ms)</th>
+                    <th>Fecha y Hora del Test</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Los registros se llenarán con JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Contenedor para el gráfico -->
+    <div id="chartContainer">
+        <canvas id="histogramChart"></canvas>
+    </div>
+
+    <!-- Botones de exportación -->
+    <div id="buttonContainer">
+        <button onclick="exportToPDF()">Exportar a PDF</button>
+        <button onclick="exportToExcel()">Exportar a Excel</button>
+        <button onclick="window.open('test_ID.php', '_blank')">Ir a Test ID</button>
+    </div>
+
+    <script>
+        // Función para obtener datos desde la URL del JSON
+        async function fetchData() {
+            const response = await fetch('https://electroia.piem.ar/movimientos.php?accion=consultar_test');
+            const data = await response.json();
+            return data;
+        }
+
+        // Función para mostrar los datos en la tabla (ordenados en orden descendente por fecha)
+        function populateTable(data) {
+            const tableBody = document.querySelector('#dataTable tbody');
+            tableBody.innerHTML = ''; // Limpiar la tabla antes de agregar nuevos datos
+
+            // Ordenar los datos en orden descendente según la fecha y hora
+            data.sort((a, b) => new Date(b.fecha_hora_test) - new Date(a.fecha_hora_test));
+
+            // Recorrer los registros y agregarlos a la tabla
+            data.forEach(record => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${record.id_test}</td>
+                    <td>${record.id_dispositivo}</td>
+                    <td>${record.tiempo_respuesta}</td>
+                    <td>${record.fecha_hora_test}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Función para generar el histograma con Chart.js (ordenado en forma ascendente por fecha)
+        function generateHistogram(data) {
+            const ctx = document.getElementById('histogramChart').getContext('2d');
+
+            // Ordenar los datos en orden ascendente para el gráfico
+            const sortedData = [...data].sort((a, b) => new Date(a.fecha_hora_test) - new Date(b.fecha_hora_test));
+
+            // Extraer las fechas y los tiempos de respuesta para el gráfico
+            const fechas = sortedData.map(record => record.fecha_hora_test);  // Eje X (Fechas y horas)
+            const tiempos = sortedData.map(record => record.tiempo_respuesta);  // Eje Y (Tiempos de respuesta)
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: fechas,  // Las fechas serán las etiquetas del eje X
+                    datasets: [{
+                        label: 'Tiempos de Respuesta (ms)',
+                        data: tiempos,  // Los tiempos de respuesta en el eje Y
+                        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Fecha y Hora del Test'
+                            },
+                            ticks: {
+                                autoSkip: true,  // Saltar etiquetas para evitar superposición
+                                maxRotation: 45,  // Rotar etiquetas
+                                minRotation: 45
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Tiempo de Respuesta (ms)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Función para exportar los datos de la tabla a PDF
+        function exportToPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Usar autoTable para crear la tabla en el PDF
+            doc.autoTable({
+                head: [['ID Test', 'ID Dispositivo', 'Tiempo Respuesta (ms)', 'Fecha y Hora del Test']],
+                body: Array.from(document.querySelectorAll('#dataTable tbody tr')).map(row => 
+                    Array.from(row.children).map(cell => cell.textContent)
+                )
+            });
+
+            // Descargar el PDF
+            doc.save('registros_test_diferenciales.pdf');
+        }
+
+        // Función para exportar los datos de la tabla a Excel
+        function exportToExcel() {
+            const wb = XLSX.utils.book_new(); // Crear nuevo libro
+            const ws = XLSX.utils.table_to_sheet(document.getElementById('dataTable')); // Convertir la tabla a sheet
+            XLSX.utils.book_append_sheet(wb, ws, 'Registros Test'); // Añadir hoja al libro
+            XLSX.writeFile(wb, 'registros_test_diferenciales.xlsx'); // Descargar archivo Excel
+        }
+
+        // Inicializar la página
+        async function initializePage() {
+            const data = await fetchData();  // Obtener datos desde el JSON
+            populateTable(data);  // Mostrar datos en la tabla
+            generateHistogram(data);  // Generar el gráfico
+        }
+
+        // Llamar a la función para inicializar la página
+        initializePage();
+    </script>
+
+</body>
+</html>
