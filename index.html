@@ -8,16 +8,18 @@
     <link rel="icon" href="./plugin.png" type="image/png">
     <link rel="stylesheet" href="./css/estilos.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <title>ENERBAR | ENERGIA | INGENIERIA</title>
 </head>
 <body>
     <header>
-        <div> 
-            <div>
+        <div class="header-content">
+            <div> 
+                
                 <a href="index.html"><img src="./assets/img/logoEnerbar2.png" alt="Logo Enerbar"></a>
-            </div>
-            <div>
-                <!-- <h1 class="izquierda italic-heading"  style="font-size: 42px;">Enerbar</h1> -->
+                                    
                 <h1>Energía sin preocupaciones...</h1>
             </div>
         </div>
@@ -25,117 +27,156 @@
         <nav>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="pages/enConstruccion.html">Galería</a></li>
-                <li><a href="pages/enConstruccion.html">Carrito</a></li>
-                <li><a href="pages/SAM.html">SAM</a></li>
-                <li><a href="pages/enConstruccion.html">Contacto</a></li>
+                <li><a href="#Servicios">Servicios</a></li>
+                <li><a href="pages/nosotros.html">Nosotros</a></li>                
+                <li><a href="pages/contacto.html">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <div class="section-wrapper">
-                <h1> Ingeniero Electricista Matriculado <br> N° 12345 COPIME</h1>
-                <hr class="separador">   
-                <h2>Proyectos, Servicios, Materiales Eléctricos, Instrumental y mucho más...</h2>
-                <section class="nosotros">
-                     
-                     <div class="nosotros-container">
-                        <div>
-                            <img src="./assets/img/galeria/asel.png" alt="asele"loading="lazy">
+        <div class="main-content">
+            <div class="presentacion-titulos">
+                <h1>Ingeniero Electricista Matriculado <br> <span>N° 12345 COPIME</span></h1>
+                   
+                <h2>Proyectos Eléctricos, Servicios, Instrumental y mucho más...</h2>
+            </div>
+            
+            <!-- <hr> -->
+            
+            <hr>
+            
+            <section id="Servicios" class="servicios">
+                <h2>Nuestros Servicios</h2>
+                <div class="servicios-grid">
+                    <a href="pages/servicios.html#instalaciones" class="servicio-item">
+                        <img src="./assets/img/servicios/herram5.png" alt="Instalaciones Eléctricas">
+                        <div class="servicio-content">
+                            <h3>Instalaciones Eléctricas</h3>
+                            <p>Diseño e instalación de sistemas eléctricos completos para hogares y empresas...</p>
                         </div>
-                        <div>
+                    </a>
+                    
+                    <a href="pages/servicios.html#mantenimiento" class="servicio-item">
+                        <img src="./assets/img/servicios/herram4.png" alt="Mantenimiento">
+                        <div class="servicio-content">
+                            <h3>Mantenimiento Preventivo</h3>
+                            <p>Programas de mantenimiento regular para prevenir fallas...</p>
+                        </div>
+                    </a>
+                    
+                    <a href="pages/servicios.html#proyectos" class="servicio-item tall">
+                        <img src="./assets/img/servicios/servicios.png" alt="Proyectos">
+                        <div class="servicio-content">
+                            <h3>Proyectos Industriales</h3>
+                            <p>Desarrollo e implementación de soluciones eléctricas industriales...</p>
+                        </div>
+                    </a>
+                    
+                    <a href="pages/servicios.html#automatizacion" class="servicio-item wide">
+                        <img src="./assets/img/servicios/automatizacion.jpeg" alt="Automatización">
+                        <div class="servicio-content">
+                            <h3>Automatización</h3>
+                            <p>Sistemas de automatización inteligente para optimizar procesos...</p>
+                        </div>
+                    </a>
+                    
+                    <a href="pages/servicios.html#certificaciones" class="servicio-item">
+                        <img src="./assets/img/servicios/certificacion.png" alt="Certificaciones">
+                        <div class="servicio-content">
+                            <h3>Certificaciones</h3>
+                            <p>Certificaciones profesionales de instalaciones eléctricas...</p>
+                        </div>
+                    </a>
+                    <a href="pages/servicios.html#analisis" class="servicio-item">
+                        <img src="./assets/img/servicios/materiales.jpg" alt="analisis">
+                        <div class="servicio-content">
+                            <h3>Análisis</h3>
+                            <p>Análisis de mediciones eléctricas</p>
+                        </div>
+                    </a>
+                    <a href="pages/servicios.html#materiales" class="servicio-item">
+                        <img src="./assets/img/servicios/materiales3.jpg" alt="materiales">
+                        <div class="servicio-content">
+                            <h3>Materiales</h3>
+                            <p>Materiales Eléctricos</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+            <div class="section-presentacion">
+                <hr>
+                <section class="nosotros">
+                    <h2 class="nosotros-h2">Nosotros</h2>
+                    <div class="nosotros-container">
+                        <img src="./assets/img/galeria/nosotros.png" alt="asele" loading="lazy">
+                        <div class="nosotros-texto">
                             <p>En Enerbar, nos especializamos en la ingeniería y el mantenimiento eléctrico, ofreciendo soluciones integrales para todas tus necesidades eléctricas. Nuestro equipo de profesionales altamente capacitados está dedicado a brindar servicios de alta calidad, asegurando la seguridad, eficiencia y confiabilidad de tus instalaciones eléctricas.</p>
                         </div>
-                     </div>
-
+                    </div>
                 </section>
+                <section id="Nosotros" class="nosotros">
+                    
+                    <div class="galeria">
+                        <div class="galeria-item">
+                            <a href="pages/nosotros.html" target="_blank">
+                                <img src="./assets/img/nosotros/herram1.png" alt="Descripción de la imagen 1">
+                                <p>Herramientas de calidad...</p>
+                            </a>
+                        </div>
+                        <div class="galeria-item">
+                            <a href="pages/nosotros.html" target="_blank">
+                                <img src="./assets/img/nosotros/tablero1.png" alt="Descripción de la imagen 2">
+                                <p>Tableros...</p>
+                            </a>
+                        </div>
+                        <div class="galeria-item">
+                            <a href="pages/nosotros.html" target="_blank">
+                                <img src="./assets/img/nosotros/tablero2.png" alt="Descripción de la imagen 3">
+                                <p>Desarrollos...</p>
+                            </a>
+                        </div>
+                        <div class="galeria-item">
+                            <a href="pages/nosotros.html" target="_blank">
+                                <img src="./assets/img/nosotros/herram3.png" alt="Descripción de la imagen 4">
+                                <p>Materiales de calidad</p>
+                            </a>
+                        </div>
+                        <!-- Agrega más imágenes según sea necesario -->
+                    </div>
+                </section>
+                <hr>
+            </div>
         </div>
-       
-            <hr class="separador">   
-        
-        <section>
-                <h3 class="izquierda">Nuestros Objetivos</h3>
-        </section>
-        
-            <hr class="separador">   
-
-        <section id="image-columns">
-            <div class="column">
-                <img src="./assets/img/galeria/IMG_5616.HEIC" alt="Descripción de la imagen 1"loading="lazy">
-                <h3>Calidad</h3>
-                <p>En Enerbar, entendemos que la calidad de tu instalación eléctrica no es un deseo, es un compromiso. Es por ello que buscamos siempre la excelencia en nuestros servicios, ofreciendo soluciones que se adaptan a tus necesidades y garantizan su funcionamiento en el tiempo.</p>
-            </div>
-            <div class="column">
-                <img src="./assets/img/galeria/IMG_1794.png" alt="Descripción de la imagen 2"loading="lazy">
-                <h3>Experiencia</h3>
-                <p>Con años de experiencia en el rubro, incorporamos habilidades y herramientas para asegurar que tu proyecto eléctrico sea exitoso.</p>
-            </div>
-            <div class="column">
-                <img src="./assets/img/galeria/IMG_7306.HEIC" alt="Descripción de la imagen 3"loading="lazy">
-                <h3>Seguridad</h3>
-                <p>Poseemos instrumentos para asegurar que tu proyecto eléctrico sea seguro y confiable. Nuestro equipo está capacitado según normativas técnicas como AEA 90364 y AEA 91140. Contamos con termografías, ensayos de diferenciales, mediciones de puesta a tierra, entre otros.
-                </p>
-            </div>
-            <div class="column">
-                <img src="./assets/img/galeria/IMG_7742.HEIC" alt="Descripción de la imagen 2"loading="lazy">
-                <h3>Innovación</h3>
-                <p>Nos mantenemos al día con las últimas tecnologías eléctricas, implementando herramientas y técnicas innovadoras para mejorar la calidad de nuestros servicios. Nos mantenemos en formación continua para garantizar que estamos ofreciendo las últimas novedades y avances del sector eléctrico.</p>
-            </div>
-        </section>
-        <hr class="separador">
-        <section>            
-            <h2 class="izquierda">Nuestros Trabajos</h2>
-            <div class="carousel">
-                <div><img src="./assets/img/galeria/IMG_1794.png" alt="Producto 1"loading="lazy"></div>
-                <!-- <div><img src="./assets/img/galeria/IMG_2476.HEIC" alt="Producto 2"loading="lazy"></div> -->
-                <!-- <div><img src="./assets/img/galeria/IMG_3880.HEIC" alt="Producto 1"loading="lazy"></div> -->
-                <!-- <div><img src="./assets/img/galeria/IMG_4596.HEIC" alt="Producto 2"loading="lazy"></div> -->
-                <!-- <div><img src="./assets/img/galeria/IMG_5385.HEIC" alt="Producto 1"loading="lazy"></div> -->
-                <!-- <div><img src="./assets/img/galeria/IMG_5616.HEIC" alt="Producto 2"loading="lazy"></div> -->
-                <!-- <div><img src="./assets/img/galeria/IMG_5616.HEIC" alt="Producto 1"loading="lazy"></div> -->
-                <!-- <div><img src="./assets/img/galeria/IMG_7306.HEIC" alt="Producto 2"loading="lazy"></div> -->
-                <!-- <div><img src="./assets/img/galeria/IMG_7742.HEIC" alt="Producto 1"loading="lazy"></div> -->
-                <!-- <div><img src="./assets/img/galeria/IMG_3880.HEIC" alt="Producto 2"loading="lazy"></div> -->
-                <!-- <div><img src="./assets/img/galeria/IMG_4596.HEIC" alt="Producto 1"loading="lazy"></div> -->
-                <!-- <div><img src="./assets/img/galeria/IMG_5616.HEIC" alt="Producto 2"loading="lazy"></div> -->
-               <!--  <div><img src="./assets/img/galeria/IMG_3880.HEIC" alt="Producto 3"></div>
-                <div><img src="./assets/img/galeria/IMG_5616.HEIC" alt="Producto 4"></div> -->
-            </div>
-        </section>
-        <hr class="separador">
-        <!-- Otras secciones aquí -->
     </main>
 
-    <footer >
+    <footer>
         <div class="footer-content">
             <div class="logo">
                 <a href="index.html"><img src="./assets/img/logoEnerbarV5.png" alt="Logo Enerbar"></a>
             </div>
+            
             <div class="contact-info">
                 <p><i class="fa-solid fa-phone"></i> +54 03487 43-2094</p>
-                <p><i class="fa-solid fa-map-marker-alt"></i>de la Torre 1224, Zárate, Buenos Aires 2800, AR</p>
+                <p><i class="fa-solid fa-map-marker-alt"></i> de la Torre 1224, Zárate, Buenos Aires 2800, AR</p>
             </div>
-            <div class="map iframe centrar">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3304.017298581956!2d-59.0310493!3d-34.0946973!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bb0b6c6d7d5b9f%3A0xe5c99992b99ff427!2sDe%20la%20Torre%201224%2C%20B2800HCR%20Z%C3%A1rate%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1729526571156!5m2!1ses-419!2sar" width="100" height="100" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>                
             
+            <div class="footer-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509123!2d-58.53212348468157!3d-34.12345667999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcbf1234567890%3A0x1234567890abcdef!2sDe%20la%20Torre%201224%2C%20Z%C3%A1rate%2C%20Buenos%20Aires%2C%20Argentina!5e0!3m2!1ses!2sus!4v1612345678901!5m2!1ses!2sus" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
         </div>
-        
-        <div class="social-media centrar">
+
+        <div class="social-media">
             <a href="https://www.facebook.com/enerbarmantenimiento/"><i class="fa-brands fa-facebook"></i></a>
             <a href="https://www.linkedin.com/company/enerbar/posts/?feedView=all"><i class="fa-brands fa-linkedin"></i></a>
             <a href="https://www.instagram.com/enerbar.energia/"><i class="fa-brands fa-instagram"></i></a>
             <a href="https://wa.me/+5491149156197" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@enerbar.com.ar&su=Consulta%20desde%20la%20web&body=Hola!%20cuando%20me%20vas%20a%20pagar%20una%20birra??" target="_blank"><i class="fa-solid fa-envelope"></i></a>
-
-
         </div>
         
-        <div class="centrar">
+        <div class="footer-bottom">
             <p>&copy; 2024 Enerbar. Todos los derechos reservados.</p>
         </div>
-        
     </footer>
 </body>
 </html>

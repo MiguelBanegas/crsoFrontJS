@@ -11,11 +11,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <title>Contacto | ENERBAR</title>
+    <title>Servicios | ENERBAR</title>
 </head>
 <body>
     <!-- Mismo header que index.html -->
     <header>
+        
         <div class="header-content">
             <div> 
                 
@@ -28,45 +29,42 @@
         <nav>
             <ul>
                 <li><a href="../index.html">Inicio</a></li>
-                <li><a href="../pages/servicios.html">Servicios</a></li>
+                <li><a href="#Servicios">Servicios</a></li>
                 <li><a href="../pages/nosotros.html">Nosotros</a></li>                
-                <li><a href="#contacto.html">Contacto</a></li>
+                <li><a href="../pages/contacto.html">Contacto</a></li>
             </ul>
         </nav>
     </header>
     
     <main>
-        <div class="main-content section-contacto">
+    <div class="main-content">
+        <div id="Servicios" class="servicios">
+            <section id="instalaciones">
+                <h2>Instalaciones Eléctricas</h2>
+                <!-- Contenido detallado -->
+            </section>
             
-            <form action="/enviar-mensaje" method="POST" class="form-centrado">
-                
-                <h1 id="contacto">Contacto</h1>
-                <div >
-                    <hr>
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" placeholder="Ingrese su nombre completo   " id="nombre" name="nombre" required>
-                </div>
-                
-                <div>
-                    <hr>
-                    <label for="email">Correo Electrónico:</label>
-                    <input type="email" placeholder="Ingrese un email valido" id="email" name="email" required>
-                </div>
-                
-                <div>
-                    <hr>
-                    <label for="mensaje">Mensaje:</label>
-                </div>
-                
-                <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
-                
-                <div>
-                    <button type="submit">Enviar</button>
-                
-                </div>
-                
-            </form>
+            <section id="mantenimiento">
+                <h2>Mantenimiento Preventivo</h2>
+                <!-- Contenido detallado -->
+            </section>
+            
+            <section id="proyectos">
+                <h2>Proyectos Industriales</h2>
+                <!-- Contenido detallado -->
+            </section>
+            
+            <section id="automatizacion">
+                <h2>Automatización</h2>
+                <!-- Contenido detallado -->
+            </section>
+            
+            <section id="certificaciones">
+                <h2>Certificaciones</h2>
+                <!-- Contenido detallado -->
+            </section>
         </div>
+    </div>
     </main>
     
     <!-- Mismo footer que index.html -->
