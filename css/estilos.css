@@ -191,8 +191,16 @@ main {
     h2 {
         color: gray;
         text-align: left;
+        text-decoration: underline;
         margin-bottom: 30px;
         font-size: 24px;
+    }
+    p{
+        color: gray;
+        font-size: 1.5rem;
+        font-style: italic;
+        line-height: 1.6;
+        margin: 10px 0 20px 0; /* Ajusta el margen inferior según sea necesario */
     }
 }
 
@@ -499,3 +507,59 @@ footer {
         max-width: 75px; /* Limitar el ancho máximo del mapa */
     }
 } 
+
+/* ensayo de diferenciales*/
+
+h1 {
+    text-align: left;
+    color: gray;
+    font-size: 1.5rem;
+    margin: 10px;
+}
+table {
+    padding: auto;
+    
+    margin: auto;
+    width: 75%;
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid gray;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+    color: gray;
+}
+th {
+    background-color: white;
+}
+/* Estilo para el contenedor con scroll */
+#scrollTableContainer {
+    max-height: 300px; /* Altura fija para la tabla con scroll */
+    overflow-y: scroll; /* Habilitar desplazamiento vertical */
+    margin-bottom: 20px; /* Espacio para el gráfico */
+}
+/* Estilo del gráfico */
+#chartContainer {
+    width: auto;
+    max-width: 600px;
+    margin: auto;
+}
+/* Botón para redirigir */
+#buttonContainer {
+    margin-top: 20px;
+    text-align: center;
+}
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+button:hover {
+    background-color: #45a049;
+}
